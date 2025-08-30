@@ -1,0 +1,15 @@
+.sidebar {
+    min-width: 220px;
+}
+
+.task-done {
+    color: #198754;
+}
+
+.task-not-done {
+    color:#dc3545;
+}
+
+a {
+  text-decoration: none;
+}
