@@ -18,13 +18,12 @@
             {% endif %}
           </h4>
 
-          <form method="post" action="{% url 'todo:task-toggle' task.pk %}" class="ms-auto">
+          <form action="{% url 'todo:task-toggle' task.pk %}" method="post">
             {% csrf_token %}
-            {% if task.is_done %}
-              <button class="btn btn-secondary">Undo</button>
-            {% else %}
-              <button class="btn btn-success">Complete</button>
-            {% endif %}
+            <button type="submit"
+                    class="btn btn-sm {% if task.is_done %}btn-secondary{% else %}btn-success{% endif %}">
+              {% if task.is_done %}Undo{% else %}Complete{% endif %}
+            </button>
           </form>
         </div>
 

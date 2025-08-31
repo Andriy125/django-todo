@@ -9,7 +9,7 @@ urlpatterns = [
     path('tasks/add/', views.TaskCreateView.as_view(), name='task-add'),
     path('tasks/<int:pk>/update/', views.TaskUpdateView.as_view(), name='task-update'),
     path('tasks/<int:pk>/delete/', views.TaskDeleteView.as_view(), name='task-delete'),
-    path('tasks/<int:pk>/toggle/', views.toggle_task_status, name='task-toggle'),
+    path('tasks/<int:pk>/toggle/', views.ToggleTaskStatusView.as_view(), name='task-toggle'),
 
     path('tags/', views.TagListView.as_view(), name='tag-list'),
     path('tags/add/', views.TagCreateView.as_view(), name='tag-add'),
