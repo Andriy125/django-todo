@@ -1,8 +1,20 @@
-# Django TODO list
+# Django TODO List
 
-Невеликий навчальний проєкт на **Django** — сайт для управління завданнями (*todo list*).
+A small practice project built with Django — a site to manage tasks.
 
-## 🔧 Встановлення та запуск
+## Features
+- Tasks with: content, created datetime, optional deadline, done flag, and tags (many-to-many)
+- Tags with unique name
+- Home page: ordered tasks (not done first, newest first), show all fields, buttons: Add / Update / Delete / Complete / Undo
+- Tag list page: table of tags with Add / Update / Delete
+- Sidebar navigation visible on all pages
+
+## Tech
+- Python 3.13
+- Django 5.2
+- Bootstrap 5
+
+## Setup
 ```bash
 git clone https://github.com/Andriy125/django-todo.git
 cd django-todo
@@ -11,41 +23,3 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-```
-
-## Відкрий у браузері:
-👉 http://127.0.0.1:8000/
-
-## 📋 Функціонал
-
-### Task
-
-* текст завдання
-
-* дата створення
-
-* опціональний дедлайн
-
-* статус (done / not done)
-
-* теги (many-to-many)
-
-### Tag
-
-* назва (унікальна)
-
-## 🖼️ Інтерфейс
-
-* Головна (/) — список завдань, кнопки Add / Update / Delete / Complete / Undo
-
-* Сторінка тегів (/tags/) — список тегів, кнопки Add / Update / Delete
-
-* Sidebar з навігацією (Home, Tags) на всіх сторінках
-
-## 🚀 Технології
-
-* Python 3.13.5
-
-* Django 5.2
-
-* Bootstrap 5 (оформлення)

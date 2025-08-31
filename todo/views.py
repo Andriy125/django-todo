@@ -1,6 +1,8 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import RedirectView
+from django.views.generic.detail import SingleObjectMixin
 
 from .models import Task, Tag
 from .forms import TaskForm, TagForm
@@ -36,12 +38,15 @@ class TaskDeleteView(generic.DeleteView):
     success_url = reverse_lazy('todo:home')
 
 
-def toggle_task_status(request, pk):
-    if request.method == 'POST':
-        task = get_object_or_404(Task, pk=pk)
-        task.is_done = not task.is_done
-        task.save(update_fields=['is_done'])
-    return redirect('todo:home')
+class ToggleTaskStatusView(SingleObjectMixin, RedirectView):
+    model = Task
+    url = reverse_lazy('todo:home')
+
+    def post(self, request, *args, **kwargs):
+        obj = self.get_object()
+        obj.is_done = not obj.is_done
+        obj.save(update_fields=['is_done'])
+        return HttpResponseRedirect(self.url)
 
 
 class TagListView(generic.ListView):
